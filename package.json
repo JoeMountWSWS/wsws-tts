@@ -1,0 +1,8 @@
+{
+  "name": "wsws-tts",
+  "private": true,
+  "scripts": {
+    "build:local": "python -m compileall -q src",
+    "test": "PYTHONPATH=src pytest -q"
+  }
+}
