@@ -1,3 +1,5 @@
+[![CI](https://github.com/JoeMountWSWS/wsws-tts/actions/workflows/ci.yml/badge.svg)](https://github.com/JoeMountWSWS/wsws-tts/actions/workflows/ci.yml)
+
 # WSWS Text-to-Speech
 
 This tool reads articles from the *[World Socialist Web Site](https://wsws.org/)* by converting the text to audio files.
