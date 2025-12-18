@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Literal
 
+import torch
+
 
 ModelName = Literal["chatterbox", "multilingual", "turbo"]
 
@@ -16,8 +18,6 @@ class TTSConfig:
 
 
 def resolve_device(device: str) -> str:
-    import torch
-
     device = device.strip().lower()
     if device not in {"auto", "cpu", "cuda"}:
         raise ValueError("device must be one of: auto, cpu, cuda")
@@ -32,9 +32,7 @@ def synthesize_chunks_to_wav_tensor(
     chunks: list[str],
     *,
     config: TTSConfig,
-) -> tuple["torch.Tensor", int]:
-    import torch
-
+) -> tuple[torch.Tensor, int]:
     device = resolve_device(config.device)
     model_name = config.model
 
@@ -77,9 +75,7 @@ def synthesize_chunks_to_wav_tensor(
     raise ValueError(f"Unknown model: {model_name}")
 
 
-def _ensure_2d(wav: "torch.Tensor") -> "torch.Tensor":
-    import torch
-
+def _ensure_2d(wav: torch.Tensor) -> torch.Tensor:
     if not isinstance(wav, torch.Tensor):
         wav = torch.as_tensor(wav)
     if wav.ndim == 1:
