@@ -1,8 +1,8 @@
 # WSWS Text-to-Speech
 
-This tool reads articles from the *[World Socialist Web Site](wsws.org)* by converting the text to audio files.
+This tool reads articles from the *[World Socialist Web Site](https://wsws.org/)* by converting the text to audio files.
 
-It is a small Python command-line tool that:
+It is a command-line tool that:
 
 1. Downloads an article from `https://www.wsws.org/en/...`
 2. Extracts the article text (via the page’s embedded Next.js `__NEXT_DATA__` JSON)
