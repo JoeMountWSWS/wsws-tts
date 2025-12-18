@@ -22,7 +22,9 @@ def build_argparser() -> argparse.ArgumentParser:
         prog="wsws-tts",
         description="Extract a WSWS (wsws.org/en) article and convert it to speech using Chatterbox.",
     )
-    p.add_argument("url", help="WSWS article URL (must start with https://www.wsws.org/en/)")
+    p.add_argument(
+        "url", help="WSWS article URL (must start with https://www.wsws.org/en/)"
+    )
     p.add_argument(
         "--out",
         default=None,
@@ -101,7 +103,9 @@ def main() -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     chunks = chunk_paragraphs(paragraphs, max_chars=args.max_chars_per_chunk)
-    print(f"Extracted {len(article.paragraphs)} paragraphs; synthesizing {len(chunks)} chunks...")
+    print(
+        f"Extracted {len(article.paragraphs)} paragraphs; synthesizing {len(chunks)} chunks..."
+    )
 
     wav, sr = synthesize_chunks_to_wav_tensor(
         chunks,

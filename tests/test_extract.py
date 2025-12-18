@@ -1,6 +1,5 @@
 import json
 
-import pytest
 
 from wsws_tts.extract import _extract_paragraphs_from_content_data, _load_next_data
 

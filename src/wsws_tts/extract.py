@@ -50,7 +50,9 @@ def _node_text(node: dict[str, Any] | None) -> str:
     return ""
 
 
-def _extract_paragraphs_from_content_data(content_data: list[dict[str, Any]]) -> list[str]:
+def _extract_paragraphs_from_content_data(
+    content_data: list[dict[str, Any]],
+) -> list[str]:
     paragraphs: list[str] = []
     for item in content_data:
         if item.get("type") != "element":
@@ -65,7 +67,7 @@ def _extract_paragraphs_from_content_data(content_data: list[dict[str, Any]]) ->
             continue
 
         if tag == "blockquote":
-            text = f"\"{text}\""
+            text = f'"{text}"'
         paragraphs.append(text)
     return paragraphs
 
@@ -104,7 +106,9 @@ def extract_wsws_article(url: str, *, timeout_s: int = 30) -> Article:
     initial_data = props.get("initialData") or {}
     page = initial_data.get("page")
     if not isinstance(page, dict):
-        raise ExtractionError("WSWS page JSON did not include props.pageProps.initialData.page")
+        raise ExtractionError(
+            "WSWS page JSON did not include props.pageProps.initialData.page"
+        )
 
     title = page.get("title") or "(untitled)"
     authors = page.get("authors") or []
